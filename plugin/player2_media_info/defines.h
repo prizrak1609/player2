@@ -1,0 +1,6 @@
+#ifndef PLAYER2_MEDIA_INFO_GLOBAL_H
+#define PLAYER2_MEDIA_INFO_GLOBAL_H
+
+#define DEBUG//write debug message
+
+#endif // PLAYER2_MEDIA_INFO_GLOBAL_H
