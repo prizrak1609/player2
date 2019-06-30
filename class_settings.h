@@ -62,7 +62,7 @@ struct struct_translate {
     QString path_dir;
 };
 
-struct struct_splash_screen{
+struct struct_splash_screen {
     QString path_to_image;
 };
 
@@ -70,28 +70,29 @@ class class_settings {
 public:
     class_settings();
     ~class_settings();
-    class_settings(QString _settings_file_path);
-    QString get(QString setting_path, QString if_not_exists=" ");
-    void set(QString setting_path, QString value);
+    void operator= (const class_settings& settings);
+    class_settings(const QString& _settings_file_path);
+    QString get(const QString& setting_path, const QString& if_not_exists=" ");
+    void set(const QString& setting_path, const QString& value);
     void save();
     void re_read();
-    struct_button *BUTTON;
-    struct_file *FILE;
-    struct_list *LIST;
-    struct_widget *WIDGET;
-    struct_playlist *PLAYLIST;
-    struct_slider *SLIDER;
-    struct_settings_file *SETTINGS_FILE;
-    struct_update *UPDATE;
-    struct_property_media *PROPERTY_MEDIA;
-    struct_translate *TRANSLATE;
+    struct_button BUTTON;
+    struct_file FILE;
+    struct_list LIST;
+    struct_widget WIDGET;
+    struct_playlist PLAYLIST;
+    struct_slider SLIDER;
+    struct_settings_file SETTINGS_FILE;
+    struct_update UPDATE;
+    struct_property_media PROPERTY_MEDIA;
+    struct_translate TRANSLATE;
     //	struct_font *FONT;
-    struct_splash_screen *SPLASH_SCREEN;
+    struct_splash_screen SPLASH_SCREEN;
     QString app_dir_path;
 
 private:
     QString settings_file_path;
-    QSettings *settings_file;
+    QSettings* settings_file;
     void readStartSettings();
     void createSettingsFile();
     void saveSettingsFile();

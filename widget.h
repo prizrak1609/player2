@@ -35,7 +35,7 @@ class Widget : public QWidget {
 public:
     explicit Widget(QWidget *parent = nullptr);
     ~Widget();
-    class_settings *settings;
+    class_settings settings;
     void create_widget();
 private:
     QString current_music_title,current_music_artist,list_item_text;
