@@ -72,8 +72,12 @@ bool QGlobalShortcut::activate(quint32 id) {
 
 quint32 QGlobalShortcut::calcId(const QKeySequence& keyseq) {
 	quint32 keycode = toNativeKeycode(getKey(keyseq));
-	quint32 mods    = toNativeModifiers(getMods(keyseq));
-	return calcId(keycode, mods);
+    quint32 mods    = toNativeModifiers(getMods(keyseq));
+    return calcId(keycode, mods);
+}
+
+quint32 QGlobalShortcut::calcId(quint32 k, quint32 m) {
+    return k | (m << 16);
 }
 
 Qt::Key QGlobalShortcut::getKey(const QKeySequence& keyseq) {

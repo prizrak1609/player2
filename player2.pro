@@ -9,17 +9,17 @@ QT += core gui multimediawidgets multimedia
 unix,!mac {
     QT += x11extras
     LIBS += -lX11 -lxcb
-    SOURCES += src/qglobalshortcut_x11.cc
+    SOURCES += src/shortcut/qglobalshortcut_x11.cc
     QMAKE_LFLAGS += -static-libgcc
 }
 
 win32 {
-    SOURCES += src/qglobalshortcut_win.cc
+    SOURCES += src/shortcut/qglobalshortcut_win.cc
     QMAKE_LFLAGS += -static-libgcc
 }
 
 mac,!unix {
-    SOURCES += src/qglobalshortcut_mac.cc
+    SOURCES += src/shortcut/qglobalshortcut_mac.cc
 }
 
 TARGET = player2
@@ -31,22 +31,25 @@ QMAKE_LFLAGS += -Wall \
 CONFIG += static \
           c++11
 
-TRANSLATIONS += uk_UA.ts en_US.ts
+TRANSLATIONS += resources/translate/uk_UA.ts resources/translate/en_US.ts
 
 SOURCES += main.cpp \
-           src/qglobalshortcut_mac.cc \
-           widget.cpp \
-           class_settings.cpp \
-           src/qglobalshortcut.cc
+           src/settings/Settings.cpp \
+           src/widget.cpp \
+           src/shortcut/qglobalshortcut.cc
 
-HEADERS += widget.h \
-            settings_key.h \
-            class_settings.h \
-            defines.h \
-            typedefs.h \
-            debug.h \
-            src/qglobalshortcut.h
+HEADERS += src/widget.h \
+            src/plugins/PluginDir.h \
+            src/plugins/PluginHelp.h \
+            src/plugins/PluginMediaInfo.h \
+            src/plugins/PluginPlaylist.h \
+            src/plugins/PluginReadme.h \
+            src/plugins/PluginUrl.h \
+            src/settings/Settings.h \
+            src/settings/SettingsKey.h \
+            src/defines.h \
+            src/shortcut/qglobalshortcut.h
 
-FORMS += widget.ui
+FORMS += ui/widget.ui
 
-RESOURCES += resource.qrc
+RESOURCES += resources/resource.qrc

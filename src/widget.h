@@ -13,9 +13,7 @@
 #include <QShortcut>
 #include <QSystemTrayIcon>
 #include <QTextEdit>
-#include <QtMultimedia/QMediaPlayer>
-#include <QtMultimedia/QMediaPlaylist>
-/* #include <QtMultimediaWidgets/QVideoWidget> */
+#include <QtMultimedia>
 #include <QKeyEvent>
 #include <QString>
 #include <QDir>
@@ -24,18 +22,23 @@
 #include <QFont>
 #include <QClipboard>
 #include <QDropEvent>
-#include<QLibrary>
-#include "class_settings.h"
-#include"typedefs.h"
+#include <QLibrary>
+#include "src/settings/Settings.h"
+#include "src/plugins/PluginDir.h"
+#include "src/plugins/PluginHelp.h"
+#include "src/plugins/PluginMediaInfo.h"
+#include "src/plugins/PluginPlaylist.h"
+#include "src/plugins/PluginReadme.h"
+#include "src/plugins/PluginUrl.h"
 
 namespace Ui { class Widget; }
 
-class Widget : public QWidget {
+class Widget : public QWidget
+{
     Q_OBJECT
 public:
     explicit Widget(QWidget *parent = nullptr);
     ~Widget();
-    class_settings settings;
     void create_widget();
 private:
     QString current_music_title,current_music_artist,list_item_text;
@@ -84,26 +87,12 @@ private:
     QPushButton *save,*get_network_adress;
     QClipboard *clipboard;
     QLibrary *player2_dir,*player2_url,*player2_help,*player2_readme,*player2_playlist,*player2_media_info;
-    //plugin dir
-    typedef_dir_scan dir_scan;
-    typedef_dir_scan_url dir_scan_url;
-    typedef_dir_open_dialog dir_open_dialog;
-    typedef_dir_open_save_dialog dir_open_save_dialog;
-    //plugin url
-    typedef_url_info url_info;
-    typedef_url_parce url_parce;
-    //plugin help
-    typedef_help_show help_show;
-    //plugin readme
-    typedef_readme_create readme_create;
-    //plugin playlist
-    typedef_playlist_save playlist_save;
-    typedef_playlist_read playlist_read;
-    //plugin media_info
-    typedef_media_info_write_metadata media_info_write_metadata;
-    typedef_media_info_write_media_info media_info_write_media_info;
-    typedef_media_info_write_media_error media_info_write_media_error;
-    typedef_media_info_get_text_list_item media_info_get_text_list_item;
+    PluginDir* pluginDir;
+    PluginUrl* pluginUrl;
+    PluginHelp* pluginHelp;
+    PluginReadme* pluginReadme;
+    PluginPlaylist* pluginPlaylist;
+    PluginMediaInfo* pluginMediaInfo;
     int index,playlistLength,playlistCount,oldPositionSlider;
     QString file_time_change_old;
     QKeyEvent *keyEvent;

@@ -1,4 +1,4 @@
-#include "widget.h"
+#include "src/widget.h"
 
 #include <QApplication>
 #include <QTranslator>
@@ -7,20 +7,14 @@
 #include <QSplashScreen>
 #include <QPixmap>
 
-#include "debug.h"
-#include "class_settings.h"
-#include "settings_key.h"
-#include "defines.h"
+#include "src/debug.h"
+#include "src/settings/settings.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     //TODO change ui to use QML
-    class_settings settings { app.applicationDirPath() };
-
-    if (settings.SETTINGS_FILE.path.isEmpty()) {
-        settings.set(SETTINGS_FILE_PATH, app.applicationDirPath());
-        settings.save();
-    }
+    Settings::createInstance(app.applicationDirPath());
+    Settings& settings = Settings::getInstance();
 
     QPixmap splash_screen_image;
 
