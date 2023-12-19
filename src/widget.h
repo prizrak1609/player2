@@ -13,7 +13,7 @@
 #include <QShortcut>
 #include <QSystemTrayIcon>
 #include <QTextEdit>
-#include <QtMultimedia>
+#include <QtMultimedia/QtMultimedia>
 #include <QKeyEvent>
 #include <QString>
 #include <QDir>
@@ -66,7 +66,7 @@ private:
     QStringList playlist_list,list_dir_temp;
     QFileInfo *file_info;
     QFileInfoList info_list_dir;
-    QMediaPlaylist *playlist;
+    // QMediaPlaylist *playlist; //TODO: it was removed, replace
     QWidget *settingswidget,*network_music;
     QShortcut *shortcutClose,*shortcutOpenFile,*shortcutHide,*shortcutPause,*shortcutHelp;
     QShortcut *shortcutOpenNetworkMusic,*shortcutPreviusMusic,*shortcutOpenDir,*shortcutNextMusic;
@@ -114,7 +114,7 @@ public slots:
     void seek(qint64 i);
     void duration(qint64 i);
     void clickedAudio(QListWidgetItem* item);
-    void nexttitle(QMediaContent media);
+    // void nexttitle(QMediaContent media); // TODO: replace QMediaContent with QURL
     void on_musicButton_pressed();
     void on_musicButton_released();
     void on_exitButton_pressed();

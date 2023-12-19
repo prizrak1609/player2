@@ -12,6 +12,8 @@ public:
 
     void set(QString setting_path, QString value);
     QString get(QString setting_path, QString if_not_exists = "");
+    
+    ~Settings();
 
 private:
     static std::unique_ptr<Settings> instance;
@@ -20,7 +22,6 @@ private:
     QSettings settings_file;
 
     Settings(QString _settings_file_path);
-    ~Settings();
 
     void save();
 };

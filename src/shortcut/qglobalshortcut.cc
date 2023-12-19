@@ -84,12 +84,13 @@ Qt::Key QGlobalShortcut::getKey(const QKeySequence& keyseq) {
 	if (keyseq.isEmpty()) {
 		return Qt::Key(0);
 	}
-    return Qt::Key(static_cast<uint>(keyseq[0]) & ~Qt::KeyboardModifierMask);
+    
+    return QKeyCombination(Qt::KeyboardModifierMask, keyseq[0].key()).key();
 }
 
 Qt::KeyboardModifiers QGlobalShortcut::getMods(const QKeySequence& keyseq) {
 	if (keyseq.isEmpty()) {
-        return Qt::KeyboardModifiers(nullptr);
+        return Qt::KeyboardModifiers(Qt::NoModifier);
 	}
-    return Qt::KeyboardModifiers(static_cast<uint>(keyseq[0]) & Qt::KeyboardModifierMask);
+    return QKeyCombination(Qt::KeyboardModifierMask, keyseq[0].key()).keyboardModifiers();
 }

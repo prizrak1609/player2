@@ -6,6 +6,8 @@
 
 #include "SettingsKey.h"
 
+std::unique_ptr<Settings> Settings::instance;
+
 Settings::Settings(QString _settings_file_path) :
     settings_file_path{_settings_file_path},
     settings_file{_settings_file_path + "/.player2_settings", QSettings::IniFormat}

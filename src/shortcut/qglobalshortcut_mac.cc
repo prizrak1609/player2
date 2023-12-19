@@ -1,6 +1,6 @@
 #include "qglobalshortcut.h"
 
-bool QGlobalShortcut::QGlobalShortcutEventFilter::nativeEventFilter(const QByteArray &event_type, void *message, long *result)
+bool QGlobalShortcut::QGlobalShortcutEventFilter::nativeEventFilter(const QByteArray& eventType, void* message, qintptr* result)
 {
     return false;
 }

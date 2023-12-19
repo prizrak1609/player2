@@ -1,4 +1,3 @@
-#include "ui_widget.h"
 #include "widget.h"
 
 #include <math.h>
@@ -13,10 +12,9 @@
 #include <QNetworkAccessManager>
 #include <QMessageBox>
 
-#include "settings_key.h"
+#include "settings/SettingsKey.h"
 //#include"src/qglobalshortcut.h"
 #include "defines.h"
-#include "debug.h"
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent),

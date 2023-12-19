@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="splash_image">player2_splash.png</file>
+    </qresource>
+</RCC>

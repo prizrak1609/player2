@@ -5,8 +5,7 @@
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
 
-bool QGlobalShortcut::QGlobalShortcutEventFilter::nativeEventFilter(
-		const QByteArray& eventType, void* message, long* result){
+bool QGlobalShortcut::QGlobalShortcutEventFilter::nativeEventFilter(const QByteArray& eventType, void* message, qintptr* result){
 	Q_UNUSED(eventType)
 	Q_UNUSED(result)
 	xcb_generic_event_t* e = static_cast<xcb_generic_event_t*>(message);
